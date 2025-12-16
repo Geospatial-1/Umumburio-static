@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Umumburio SHG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Animated Star Border -->
+    <svg id="border-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+            <filter id="starGlow">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <!-- Star Border -->
+        <path id="border-path" d="M2,2 L98,2 L98,98 L2,98 Z" 
+              fill="none" 
+              stroke="rgba(0, 255, 156, 0.1)" 
+              stroke-width="0.5"/>
+        
+        <!-- Animated Stars -->
+        <g id="stars"></g>
+    </svg>
+
+    <!-- Page Content -->
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                <span>Umumburio SHG</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="members.html">Members</a>
+                <a href="loans.html">Loans</a>
+                <a href="events.html">Events</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="index.html#join">Join Us</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </nav>
+        </header>
+
+        <!-- Gallery Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Our Journey in Pictures</h1>
+                <p>Experience the growth, events, and community impact of Umumburio SHG through our photo gallery. From meetings to community projects, see how we're making a difference together.</p>
+                <div class="cta-buttons">
+                    <a href="#photo-gallery" class="btn btn-primary">
+                        <i class="fas fa-images"></i> Browse Photos
+                    </a>
+                    <a href="#video-gallery" class="btn btn-secondary">
+                        <i class="fas fa-video"></i> Watch Videos
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3><i class="fas fa-camera"></i> 500+ Photos</h3>
+                    <p>Documenting our journey since 2015</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-calendar"></i> 8 Categories</h3>
+                    <p>Organized by events and activities</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-users"></i> Community Focus</h3>
+                    <p>Capturing moments that matter</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Filter -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Photo Gallery</h2>
+                <p>Browse photos by category or event type</p>
+            </div>
+            
+            <div class="category-filter" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px;">
+                <button class="category-btn active" data-category="all" onclick="filterGallery('all')">
+                    <i class="fas fa-images"></i> All Photos
+                </button>
+                <button class="category-btn" data-category="meetings" onclick="filterGallery('meetings')">
+                    <i class="fas fa-users"></i> Meetings
+                </button>
+                <button class="category-btn" data-category="events" onclick="filterGallery('events')">
+                    <i class="fas fa-calendar-alt"></i> Events
+                </button>
+                <button class="category-btn" data-category="training" onclick="filterGallery('training')">
+                    <i class="fas fa-graduation-cap"></i> Training
+                </button>
+                <button class="category-btn" data-category="community" onclick="filterGallery('community')">
+                    <i class="fas fa-hands-helping"></i> Community
+                </button>
+                <button class="category-btn" data-category="loans" onclick="filterGallery('loans')">
+                    <i class="fas fa-hand-holding-usd"></i> Loans
+                </button>
+                <button class="category-btn" data-category="social" onclick="filterGallery('social')">
+                    <i class="fas fa-utensils"></i> Social
+                </button>
+            </div>
+            
+            <!-- Photo Grid -->
+            <div class="photo-grid" id="photo-gallery" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                <!-- Photos will be loaded dynamically -->
+                <div class="photo-item" data-category="meetings">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery1.jpg" alt="Monthly Meeting" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Meeting'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Monthly Meeting</h4>
+                            <p>February 2024 gathering</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="training">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery2.jpg" alt="Financial Training" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Training'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Financial Literacy</h4>
+                            <p>Budgeting workshop</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="community">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery3.jpg" alt="Community Clean-up" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Community'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Clean-up Day</h4>
+                            <p>Kehancha market area</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="loans">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery4.jpg" alt="Loan Disbursement" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Loans'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Loan Day</h4>
+                            <p>Member receiving funds</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="events">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery5.jpg" alt="Annual General Meeting" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=AGM'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Annual AGM</h4>
+                            <p>2023 review and elections</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="social">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery6.jpg" alt="Member Celebration" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Celebration'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Member Celebration</h4>
+                            <p>Birthday celebrations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="training">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery7.jpg" alt="Business Training" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Business'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Business Training</h4>
+                            <p>Marketing workshop</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="community">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery8.jpg" alt="Tree Planting" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Environment'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Tree Planting</h4>
+                            <p>Environmental project</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-item" data-category="meetings">
+                    <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                        <img src="images/gallery9.jpg" alt="Executive Meeting" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Executive'">
+                        <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Executive Meeting</h4>
+                            <p>Committee planning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-secondary" id="loadMoreBtn" onclick="loadMorePhotos()">
+                    <i class="fas fa-plus"></i> Load More Photos
+                </button>
+            </div>
+        </section>
+
+        <!-- Video Gallery -->
+        <section class="section" id="video-gallery">
+            <div class="section-title">
+                <h2>Video Gallery</h2>
+                <p>Watch highlights from our events and activities</p>
+            </div>
+            
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="video-item" style="background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(0, 0, 0, 0.3);">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--primary-green); cursor: pointer;" 
+                               onclick="playVideo('annual-review-2023')"></i>
+                        </div>
+                        <img src="images/video1.jpg" alt="Annual Review" 
+                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+                             onerror="this.src='https://placehold.co/400x225/00ff9c/0a192f?text=Annual+Review'">
+                    </div>
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-light);">Annual Review 2023</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">Highlights of our achievements and member success stories from 2023.</p>
+                        <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.9rem;">
+                            <span><i class="fas fa-clock"></i> 8:45 min</span>
+                            <span><i class="fas fa-calendar"></i> Dec 2023</span>
+                            <span><i class="fas fa-eye"></i> 245 views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item" style="background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(0, 0, 0, 0.3);">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--primary-green); cursor: pointer;"
+                               onclick="playVideo('member-testimonials')"></i>
+                        </div>
+                        <img src="images/video2.jpg" alt="Member Testimonials" 
+                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+                             onerror="this.src='https://placehold.co/400x225/00ff9c/0a192f?text=Testimonials'">
+                    </div>
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-light);">Member Success Stories</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">Hear from members whose lives and businesses have been transformed.</p>
+                        <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.9rem;">
+                            <span><i class="fas fa-clock"></i> 12:30 min</span>
+                            <span><i class="fas fa-calendar"></i> Nov 2023</span>
+                            <span><i class="fas fa-eye"></i> 189 views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-item" style="background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; background: rgba(0, 0, 0, 0.3);">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--primary-green); cursor: pointer;"
+                               onclick="playVideo('financial-training')"></i>
+                        </div>
+                        <img src="images/video3.jpg" alt="Financial Training" 
+                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+                             onerror="this.src='https://placehold.co/400x225/00ff9c/0a192f?text=Training'">
+                    </div>
+                    <div style="padding: 20px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-light);">Financial Literacy Workshop</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">Complete recording of our popular budgeting and saving workshop.</p>
+                        <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.9rem;">
+                            <span><i class="fas fa-clock"></i> 45:20 min</span>
+                            <span><i class="fas fa-calendar"></i> Oct 2023</span>
+                            <span><i class="fas fa-eye"></i> 312 views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Our Journey Timeline</h2>
+                <p>Key milestones in the growth of Umumburio SHG</p>
+            </div>
+            
+            <div class="timeline" style="max-width: 800px; margin: 0 auto; position: relative;">
+                <!-- Timeline line -->
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: linear-gradient(to bottom, var(--primary-green), var(--neon-green));"></div>
+                
+                <!-- Timeline items -->
+                <div class="timeline-item" style="margin: 40px 0; position: relative;">
+                    <div style="width: 20px; height: 20px; background: var(--primary-green); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;"></div>
+                    <div style="width: 45%; padding: 20px; background: var(--card-bg); border-radius: var(--border-radius); position: relative; left: 0;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 10px;">2015</h3>
+                        <p style="color: var(--text-muted);">Umumburio SHG founded with 25 founding members. First meeting held at Rhino Building.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" style="margin: 40px 0; position: relative;">
+                    <div style="width: 20px; height: 20px; background: var(--primary-green); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;"></div>
+                    <div style="width: 45%; padding: 20px; background: var(--card-bg); border-radius: var(--border-radius); position: relative; left: 55%;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 10px;">2017</h3>
+                        <p style="color: var(--text-muted);">Registered as official Self Help Group. First loan program launched with KES 500,000 capital.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" style="margin: 40px 0; position: relative;">
+                    <div style="width: 20px; height: 20px; background: var(--primary-green); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;"></div>
+                    <div style="width: 45%; padding: 20px; background: var(--card-bg); border-radius: var(--border-radius); position: relative; left: 0;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 10px;">2019</h3>
+                        <p style="color: var(--text-muted);">Reached 100 active members. Launched financial literacy training program.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" style="margin: 40px 0; position: relative;">
+                    <div style="width: 20px; height: 20px; background: var(--primary-green); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;"></div>
+                    <div style="width: 45%; padding: 20px; background: var(--card-bg); border-radius: var(--border-radius); position: relative; left: 55%;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 10px;">2021</h3>
+                        <p style="color: var(--text-muted);">Survived COVID-19 challenges. Digital record keeping introduced. First community project launched.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" style="margin: 40px 0; position: relative;">
+                    <div style="width: 20px; height: 20px; background: var(--primary-green); border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;"></div>
+                    <div style="width: 45%; padding: 20px; background: var(--card-bg); border-radius: var(--border-radius); position: relative; left: 0;">
+                        <h3 style="color: var(--primary-green); margin-bottom: 10px;">2023</h3>
+                        <p style="color: var(--text-muted);">Reached 150+ members. Over KES 10 million disbursed in loans. Website launched.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Umumburio SHG</div>
+                    <p>Empowering members through financial support, business growth, and community development since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rhino Building, Kehancha Town</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@umumburioshg.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="index.html#join">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Umumburio SHG. All rights reserved. | Registered Self Help Group No. SHG/7890/2023</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="position: relative; max-width: 90%; max-height: 90%;">
+            <button onclick="closeLightbox()" style="position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="" style="max-width: 100%; max-height: 80vh; border-radius: 10px;">
+            <div id="lightbox-caption" style="color: white; text-align: center; margin-top: 10px;"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Gallery page specific functionality
+        let currentFilter = 'all';
+        let loadedPhotos = 9;
+        const totalPhotos = 24; // Simulated total
+        
+        function filterGallery(category) {
+            currentFilter = category;
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter photos
+            const photoItems = document.querySelectorAll('.photo-item');
+            photoItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Reset load more button
+            loadedPhotos = 9;
+            document.getElementById('loadMoreBtn').style.display = 'block';
+        }
+        
+        function loadMorePhotos() {
+            // Simulate loading more photos
+            if (loadedPhotos >= totalPhotos) {
+                document.getElementById('loadMoreBtn').style.display = 'none';
+                alert('All photos loaded!');
+                return;
+            }
+            
+            // In real implementation, this would fetch more photos from server
+            const photoGrid = document.getElementById('photo-gallery');
+            const newPhotos = [
+                { category: 'events', title: 'Annual Dinner', desc: '2023 celebrations' },
+                { category: 'training', title: 'Digital Skills', desc: 'Computer training' },
+                { category: 'community', title: 'Health Camp', desc: 'Medical outreach' }
+            ];
+            
+            newPhotos.forEach(photo => {
+                if (currentFilter === 'all' || currentFilter === photo.category) {
+                    const photoItem = document.createElement('div');
+                    photoItem.className = 'photo-item';
+                    photoItem.dataset.category = photo.category;
+                    
+                    const randomImage = Math.floor(Math.random() * 9) + 1;
+                    
+                    photoItem.innerHTML = `
+                        <div class="photo-container" style="position: relative; overflow: hidden; border-radius: var(--border-radius); height: 250px;">
+                            <img src="images/gallery${randomImage}.jpg" alt="${photo.title}" 
+                                 style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                                 onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=${photo.title.replace(' ', '+')}'">
+                            <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                                <h4 style="margin-bottom: 5px;">${photo.title}</h4>
+                                <p>${photo.desc}</p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    photoGrid.appendChild(photoItem);
+                    loadedPhotos++;
+                }
+            });
+            
+            if (loadedPhotos >= totalPhotos) {
+                document.getElementById('loadMoreBtn').style.display = 'none';
+            }
+            
+            // Reinitialize photo hover effects
+            initPhotoHover();
+        }
+        
+        function initPhotoHover() {
+            const photoContainers = document.querySelectorAll('.photo-container');
+            photoContainers.forEach(container => {
+                container.addEventListener('mouseenter', function() {
+                    const img = this.querySelector('img');
+                    const overlay = this.querySelector('.photo-overlay');
+                    
+                    if (img) img.style.transform = 'scale(1.1)';
+                    if (overlay) overlay.style.transform = 'translateY(0)';
+                });
+                
+                container.addEventListener('mouseleave', function() {
+                    const img = this.querySelector('img');
+                    const overlay = this.querySelector('.photo-overlay');
+                    
+                    if (img) img.style.transform = 'scale(1)';
+                    if (overlay) overlay.style.transform = 'translateY(100%)';
+                });
+                
+                // Add click to open lightbox
+                container.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const caption = this.querySelector('.photo-overlay h4')?.textContent || '';
+                    
+                    if (img) {
+                        openLightbox(img.src, caption);
+                    }
+                });
+            });
+        }
+        
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.style.display = 'flex';
+            
+            // Prevent scrolling
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            
+            // Re-enable scrolling
+            document.body.style.overflow = 'auto';
+        }
+        
+        function playVideo(videoId) {
+            // In real implementation, this would play the video
+            alert(`Playing video: ${videoId}\n\nIn the full implementation, this would:\n1. Fetch video from storage\n2. Open video player modal\n3. Stream the video content`);
+            
+            // Example of what would happen:
+            // const videoUrl = `https://storage.googleapis.com/umumburio-videos/${videoId}.mp4`;
+            // openVideoPlayer(videoUrl);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initPhotoHover();
+            
+            // Close lightbox on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+            
+            // Close lightbox when clicking outside
+            document.getElementById('lightbox')?.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

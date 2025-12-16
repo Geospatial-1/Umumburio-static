@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Dashboard - Umumburio SHG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Animated Star Border -->
+    <svg id="border-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+            <filter id="starGlow">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <!-- Star Border -->
+        <path id="border-path" d="M2,2 L98,2 L98,98 L2,98 Z" 
+              fill="none" 
+              stroke="rgba(0, 255, 156, 0.1)" 
+              stroke-width="0.5"/>
+        
+        <!-- Animated Stars -->
+        <g id="stars"></g>
+    </svg>
+
+    <!-- Page Content -->
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                <span>Executive Dashboard</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#loans">Loans</a>
+                <a href="#members">Members</a>
+                <a href="#events">Events</a>
+                <a href="#announcements">Announcements</a>
+                <button id="logoutBtn" class="login-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </nav>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="user-info" style="text-align: center; margin-bottom: 30px;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--card-bg); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user-tie" style="font-size: 2rem; color: var(--primary-green);"></i>
+                    </div>
+                    <h3 id="userName">Executive User</h3>
+                    <p style="color: var(--primary-green); font-size: 0.9rem;" id="userRole">EXECUTIVE</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;" id="userEmail">executive@umumburioshg.co.ke</p>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <a href="#executive-overview" class="sidebar-link active">
+                        <i class="fas fa-tachometer-alt"></i> Overview
+                    </a>
+                    <a href="#loan-review" class="sidebar-link">
+                        <i class="fas fa-hand-holding-usd"></i> Loan Review
+                    </a>
+                    <a href="#member-approval" class="sidebar-link">
+                        <i class="fas fa-user-check"></i> Member Approval
+                    </a>
+                    <a href="#event-management" class="sidebar-link">
+                        <i class="fas fa-calendar-plus"></i> Event Management
+                    </a>
+                    <a href="#announcements-executive" class="sidebar-link">
+                        <i class="fas fa-bullhorn"></i> Announcements
+                    </a>
+                    <a href="#quorum" class="sidebar-link">
+                        <i class="fas fa-users-cog"></i> Quorum Management
+                    </a>
+                    <a href="#notifications" class="sidebar-link">
+                        <i class="fas fa-bell"></i> Notifications
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="dashboard-content">
+                <div id="executive-overview" class="dashboard-section">
+                    <h2 style="margin-bottom: 30px; color: var(--primary-green);">Executive Dashboard</h2>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                        <div class="dashboard-widget">
+                            <h3><i class="fas fa-file-signature"></i> Pending Reviews</h3>
+                            <p style="font-size: 2rem; font-weight: bold;" id="pendingReviews">8</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Loans: <span id="pendingLoanReviews">5</span></p>
+                        </div>
+                        
+                        <div class="dashboard-widget">
+                            <h3><i class="fas fa-user-clock"></i> Member Applications</h3>
+                            <p style="font-size: 2rem; font-weight: bold;" id="memberApplications">6</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Awaiting: <span id="awaitingReview">4</span></p>
+                        </div>
+                        
+                        <div class="dashboard-widget">
+                            <h3><i class="fas fa-calendar-star"></i> Event Proposals</h3>
+                            <p style="font-size: 2rem; font-weight: bold;" id="eventProposals">3</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Your Proposals: <span id="yourProposals">2</span></p>
+                        </div>
+                        
+                        <div class="dashboard-widget">
+                            <h3><i class="fas fa-comments"></i> Quorum Status</h3>
+                            <p style="font-size: 2rem; font-weight: bold;" id="quorumReady">2/4</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Available: <span id="availableExecutives">3</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="dashboard-widget">
+                        <h3>Quick Actions</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                            <button class="btn btn-primary" onclick="reviewLoans()">
+                                <i class="fas fa-file-invoice-dollar"></i> Review Loans
+                            </button>
+                            <button class="btn btn-secondary" onclick="proposeEvent()">
+                                <i class="fas fa-calendar-plus"></i> Propose Event
+                            </button>
+                            <button class="btn btn-primary" onclick="createAnnouncement()">
+                                <i class="fas fa-bullhorn"></i> Create Announcement
+                            </button>
+                            <button class="btn btn-secondary" onclick="checkQuorum()">
+                                <i class="fas fa-users"></i> Check Quorum
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pending Actions -->
+                    <div class="dashboard-widget">
+                        <h3>Your Pending Actions</h3>
+                        <div id="pendingActions" style="max-height: 300px; overflow-y: auto;">
+                            <div class="pending-item" style="padding: 15px; border-bottom: 1px solid rgba(0, 255, 156, 0.1);">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <p style="font-weight: 500;">Loan Application - John Doe</p>
+                                        <p style="color: var(--text-muted); font-size: 0.9rem;">KES 50,000 - Business Expansion</p>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="approveLoan('loan1')">Approve</button>
+                                        <button class="btn btn-secondary btn-sm" onclick="rejectLoan('loan1')">Reject</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pending-item" style="padding: 15px; border-bottom: 1px solid rgba(0, 255, 156, 0.1);">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <p style="font-weight: 500;">Member Application - Jane Smith</p>
+                                        <p style="color: var(--text-muted); font-size: 0.9rem;">New Member - Grocery Business</p>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="approveMember('member1')">Approve</button>
+                                        <button class="btn btn-secondary btn-sm" onclick="requestInfo('member1')">More Info</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loan Review Section -->
+                <div id="loan-review" class="dashboard-section" style="display: none;">
+                    <h2 style="margin-bottom: 30px; color: var(--primary-green);">Loan Review & Approval</h2>
+                    
+                    <div class="dashboard-widget">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3>Pending Loan Applications</h3>
+                            <div>
+                                <span style="color: var(--text-muted); margin-right: 15px;">Quorum: <strong id="loanQuorum">2/4</strong></span>
+                                <button class="btn btn-primary" onclick="sendLoanReminder()">
+                                    <i class="fas fa-bell"></i> Send Reminder
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="loanApplicationsList">
+                            <!-- Loan applications will be loaded dynamically -->
+                            <div class="loan-application" style="background: var(--card-bg); padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <h4 style="margin-bottom: 10px;">Sarah Johnson - KES 75,000</h4>
+                                        <p style="color: var(--text-muted); margin-bottom: 10px;">Purpose: School Fees & Business Restocking</p>
+                                        <p style="color: var(--text-muted); font-size: 0.9rem;">Applied: 2 days ago | Repayment: 6 months</p>
+                                        <p style="color: var(--primary-green); font-size: 0.9rem;">Guarantor: Mary Wanjiku</p>
+                                    </div>
+                                    <div>
+                                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                                            <button class="btn btn-primary btn-sm" onclick="approveApplication('loan2')">Approve</button>
+                                            <button class="btn btn-secondary btn-sm" onclick="rejectApplication('loan2')">Reject</button>
+                                            <button class="btn btn-secondary btn-sm" onclick="requestGuarantee('loan2')">Request Guarantee</button>
+                                        </div>
+                                        <div style="color: var(--text-muted); font-size: 0.8rem;">
+                                            <p>Executive Votes: 2/4 Approved</p>
+                                            <p>Your Vote: <strong style="color: var(--primary-green);">Pending</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-widget">
+                        <h3>Loan Approval Statistics</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: bold;">15</p>
+                                <p style="color: var(--text-muted);">Approved This Month</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: bold;">KES 750,000</p>
+                                <p style="color: var(--text-muted);">Total Approved</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: bold;">3</p>
+                                <p style="color: var(--text-muted);">Awaiting Quorum</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="font-size: 1.5rem; font-weight: bold;">98%</p>
+                                <p style="color: var(--text-muted);">Approval Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Member Approval Section -->
+                <div id="member-approval" class="dashboard-section" style="display: none;">
+                    <h2 style="margin-bottom: 30px; color: var(--primary-green);">Member Approval</h2>
+                    
+                    <div class="dashboard-widget">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3>New Member Applications</h3>
+                            <span style="color: var(--text-muted);">Quorum Required: <strong>4/4 Executives</strong></span>
+                        </div>
+                        
+                        <div id="memberApplicationsList">
+                            <!-- Member applications will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Umumburio SHG</div>
+                    <p>Empowering members through financial support, business growth, and community development since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rhino Building, Kehancha Town</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@umumburioshg.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#join">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Umumburio SHG. All rights reserved. | Registered Self Help Group No. SHG/7890/2023</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Executive dashboard specific functionality
+        function reviewLoans() {
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById('loan-review').style.display = 'block';
+            
+            // Update active sidebar link
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector('a[href="#loan-review"]').classList.add('active');
+        }
+        
+        function proposeEvent() {
+            // Show event proposal modal
+            const eventData = {
+                title: prompt('Event Title:'),
+                description: prompt('Event Description:'),
+                date: prompt('Event Date (YYYY-MM-DD):'),
+                location: prompt('Event Location:')
+            };
+            
+            if (eventData.title && eventData.description && eventData.date) {
+                // Submit to Firebase
+                window.firebaseAuth.createEvent(eventData)
+                    .then(() => {
+                        alert('Event proposal submitted! Awaiting admin approval.');
+                    })
+                    .catch(error => {
+                        alert('Error: ' + error.message);
+                    });
+            }
+        }
+        
+        function createAnnouncement() {
+            const announcement = prompt('Enter announcement:');
+            if (announcement) {
+                window.firebaseAuth.sendNotification({
+                    type: 'announcement',
+                    message: announcement,
+                    createdBy: 'executive',
+                    status: 'pending_approval'
+                })
+                .then(() => {
+                    alert('Announcement submitted for admin approval.');
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
+            }
+        }
+        
+        function checkQuorum() {
+            // Check available executives
+            alert('Checking executive availability...');
+        }
+        
+        function approveLoan(loanId) {
+            if (confirm('Approve this loan application?')) {
+                // Send approval to Firebase
+                console.log('Approving loan:', loanId);
+                alert('Your approval has been recorded. Awaiting other executives.');
+            }
+        }
+        
+        function rejectLoan(loanId) {
+            const reason = prompt('Reason for rejection:');
+            if (reason) {
+                // Send rejection to Firebase
+                console.log('Rejecting loan:', loanId, 'Reason:', reason);
+                alert('Loan application rejected.');
+            }
+        }
+        
+        function approveMember(memberId) {
+            if (confirm('Approve this member application?')) {
+                console.log('Approving member:', memberId);
+                alert('Member approval recorded.');
+            }
+        }
+        
+        function requestInfo(memberId) {
+            const infoRequest = prompt('What additional information do you need?');
+            if (infoRequest) {
+                console.log('Requesting info for member:', memberId, 'Info:', infoRequest);
+                alert('Information request sent to applicant.');
+            }
+        }
+        
+        // Initialize sidebar navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.dashboard-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show selected section
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).style.display = 'block';
+                    
+                    // Update active link
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

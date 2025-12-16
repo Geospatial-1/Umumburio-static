@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Umumburio SHG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Animated Star Border -->
+    <svg id="border-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+            <filter id="starGlow">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <!-- Star Border -->
+        <path id="border-path" d="M2,2 L98,2 L98,98 L2,98 Z" 
+              fill="none" 
+              stroke="rgba(0, 255, 156, 0.1)" 
+              stroke-width="0.5"/>
+        
+        <!-- Animated Stars -->
+        <g id="stars"></g>
+    </svg>
+
+    <!-- Page Content -->
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                <span>Umumburio SHG</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="members.html" class="active">Members</a>
+                <a href="loans.html">Loans</a>
+                <a href="events.html">Events</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#join">Join Us</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </nav>
+        </header>
+
+        <!-- Members Section -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Our Members</h2>
+                <p>Meet the vibrant community of entrepreneurs and business owners in Umumburio SHG</p>
+            </div>
+            
+            <!-- Search and Filter -->
+            <div class="dashboard-widget" style="margin-bottom: 30px;">
+                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <input type="text" id="searchMembers" placeholder="Search members by name or business..." style="width: 100%;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <select id="filterBusiness" style="width: 100%;">
+                            <option value="">All Businesses</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="retail">Retail</option>
+                            <option value="services">Services</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="food">Food & Beverage</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <select id="filterLocation" style="width: 100%;">
+                            <option value="">All Locations</option>
+                            <option value="kehancha">Kehancha Town</option>
+                            <option value="migori">Migori</option>
+                            <option value="riranyi">Riranyi</option>
+                            <option value="kegonga">Kegonga</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <p style="color: var(--text-muted);" id="memberCount">Showing 150 active members</p>
+                    <div>
+                        <button class="btn btn-secondary btn-sm" onclick="resetFilters()">
+                            <i class="fas fa-redo"></i> Reset Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Members Grid -->
+            <div class="team-grid" id="membersGrid">
+                <!-- Members will be loaded dynamically -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/member1.jpg" alt="John Kamau" onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=J.+Kamau'">
+                    </div>
+                    <h3>John Kamau</h3>
+                    <p>Groceries & Retail</p>
+                    <p>Kehancha Town</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2018</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/member2.jpg" alt="Mary Wanjiku" onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=M.+Wanjiku'">
+                    </div>
+                    <h3>Mary Wanjiku</h3>
+                    <p>Vegetable Farming</p>
+                    <p>Riranyi</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2019</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/member3.jpg" alt="James Otieno" onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=J.+Otieno'">
+                    </div>
+                    <h3>James Otieno</h3>
+                    <p>Motorcycle Taxi</p>
+                    <p>Kehancha Town</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2020</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/member4.jpg" alt="Grace Akinyi" onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=G.+Akinyi'">
+                    </div>
+                    <h3>Grace Akinyi</h3>
+                    <p>Tailoring Shop</p>
+                    <p>Migori</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2021</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/member5.jpg" alt="Peter Mwangi" onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=P.+Mwangi'">
+                    </div>
+                    <h3>Peter Mwangi</h3>
+                    <p>Poultry Farming</p>
+                    <p>Kegonga</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2017</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/member6.jpg" alt="Sarah Atieno" onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=S.+Atieno'">
+                    </div>
+                    <h3>Sarah Atieno</h3>
+                    <p>Beauty Salon</p>
+                    <p>Kehancha Town</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2022</p>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="pagination">
+                    <button class="btn btn-secondary btn-sm" onclick="prevPage()">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <span style="margin: 0 20px; color: var(--text-muted);">
+                        Page <span id="currentPage">1</span> of <span id="totalPages">5</span>
+                    </span>
+                    <button class="btn btn-secondary btn-sm" onclick="nextPage()">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Member Statistics</h2>
+                <p>Growth and impact of our member community</p>
+            </div>
+            
+            <div class="cards-grid" style="margin-top: 0;">
+                <div class="service-card">
+                    <i class="fas fa-chart-line service-icon"></i>
+                    <h3>Member Growth</h3>
+                    <p>From 50 members in 2015 to over 150 active members today, growing at 25% annually.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-industry service-icon"></i>
+                    <h3>Business Diversity</h3>
+                    <p>Members operate in 15+ different business sectors across Migori County.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-hand-holding-usd service-icon"></i>
+                    <h3>Financial Impact</h3>
+                    <p>Over KES 10 million disbursed in loans with 98% repayment rate.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-users service-icon"></i>
+                    <h3>Community Reach</h3>
+                    <p>Supporting over 500 families through our members' businesses and initiatives.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Categories -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Business Categories</h2>
+                <p>Diverse entrepreneurial ventures of our members</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-seedling service-icon"></i>
+                    <h3>Agriculture</h3>
+                    <p>35 members in crop farming, poultry, dairy, and horticulture.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-store service-icon"></i>
+                    <h3>Retail Trade</h3>
+                    <p>45 members operating shops, supermarkets, and wholesale businesses.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-tools service-icon"></i>
+                    <h3>Services</h3>
+                    <p>40 members in tailoring, salon, repairs, and professional services.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-utensils service-icon"></i>
+                    <h3>Food & Hospitality</h3>
+                    <p>20 members in restaurants, catering, and food processing.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-truck service-icon"></i>
+                    <h3>Transport</h3>
+                    <p>15 members in motorcycle taxis, goods transport, and logistics.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap service-icon"></i>
+                    <h3>Education</h3>
+                    <p>10 members operating schools, tuition centers, and training institutes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Umumburio SHG</div>
+                    <p>Empowering members through financial support, business growth, and community development since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rhino Building, Kehancha Town</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@umumburioshg.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#join">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Umumburio SHG. All rights reserved. | Registered Self Help Group No. SHG/7890/2023</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Members page specific functionality
+        let currentPage = 1;
+        const membersPerPage = 6;
+        let allMembers = [];
+        let filteredMembers = [];
+        
+        // Sample member data (in real app, load from Firebase)
+        const sampleMembers = [
+            {
+                name: "John Kamau",
+                business: "Groceries & Retail",
+                location: "Kehancha Town",
+                joinDate: "2018",
+                category: "retail"
+            },
+            {
+                name: "Mary Wanjiku",
+                business: "Vegetable Farming",
+                location: "Riranyi",
+                joinDate: "2019",
+                category: "agriculture"
+            },
+            {
+                name: "James Otieno",
+                business: "Motorcycle Taxi",
+                location: "Kehancha Town",
+                joinDate: "2020",
+                category: "transport"
+            },
+            {
+                name: "Grace Akinyi",
+                business: "Tailoring Shop",
+                location: "Migori",
+                joinDate: "2021",
+                category: "services"
+            },
+            {
+                name: "Peter Mwangi",
+                business: "Poultry Farming",
+                location: "Kegonga",
+                joinDate: "2017",
+                category: "agriculture"
+            },
+            {
+                name: "Sarah Atieno",
+                business: "Beauty Salon",
+                location: "Kehancha Town",
+                joinDate: "2022",
+                category: "services"
+            },
+            {
+                name: "David Omondi",
+                business: "Hardware Store",
+                location: "Kehancha Town",
+                joinDate: "2019",
+                category: "retail"
+            },
+            {
+                name: "Esther Nyambura",
+                business: "Restaurant",
+                location: "Migori",
+                joinDate: "2020",
+                category: "food"
+            },
+            {
+                name: "Michael Odhiambo",
+                business: "Maize Mill",
+                location: "Riranyi",
+                joinDate: "2018",
+                category: "manufacturing"
+            },
+            {
+                name: "Lucy Adhiambo",
+                business: "Daycare Center",
+                location: "Kehancha Town",
+                joinDate: "2021",
+                category: "education"
+            },
+            {
+                name: "Robert Onyango",
+                business: "Construction",
+                location: "Kegonga",
+                joinDate: "2019",
+                category: "services"
+            },
+            {
+                name: "Beatrice Achieng",
+                business: "Fish Farming",
+                location: "Migori",
+                joinDate: "2020",
+                category: "agriculture"
+            }
+        ];
+        
+        function initializeMembers() {
+            allMembers = [...sampleMembers];
+            filteredMembers = [...allMembers];
+            updateMemberCount();
+            displayMembers();
+            setupFilters();
+        }
+        
+        function setupFilters() {
+            const searchInput = document.getElementById('searchMembers');
+            const businessFilter = document.getElementById('filterBusiness');
+            const locationFilter = document.getElementById('filterLocation');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', filterMembers);
+            }
+            
+            if (businessFilter) {
+                businessFilter.addEventListener('change', filterMembers);
+            }
+            
+            if (locationFilter) {
+                locationFilter.addEventListener('change', filterMembers);
+            }
+        }
+        
+        function filterMembers() {
+            const searchTerm = document.getElementById('searchMembers').value.toLowerCase();
+            const businessType = document.getElementById('filterBusiness').value;
+            const location = document.getElementById('filterLocation').value;
+            
+            filteredMembers = allMembers.filter(member => {
+                const matchesSearch = !searchTerm || 
+                    member.name.toLowerCase().includes(searchTerm) ||
+                    member.business.toLowerCase().includes(searchTerm);
+                
+                const matchesBusiness = !businessType || member.category === businessType;
+                const matchesLocation = !location || member.location.toLowerCase().includes(location.toLowerCase());
+                
+                return matchesSearch && matchesBusiness && matchesLocation;
+            });
+            
+            currentPage = 1;
+            updateMemberCount();
+            displayMembers();
+        }
+        
+        function resetFilters() {
+            document.getElementById('searchMembers').value = '';
+            document.getElementById('filterBusiness').value = '';
+            document.getElementById('filterLocation').value = '';
+            filteredMembers = [...allMembers];
+            currentPage = 1;
+            updateMemberCount();
+            displayMembers();
+        }
+        
+        function updateMemberCount() {
+            const memberCountElement = document.getElementById('memberCount');
+            if (memberCountElement) {
+                memberCountElement.textContent = `Showing ${filteredMembers.length} members`;
+            }
+            
+            const totalPages = Math.ceil(filteredMembers.length / membersPerPage);
+            document.getElementById('totalPages').textContent = totalPages || 1;
+        }
+        
+        function displayMembers() {
+            const membersGrid = document.getElementById('membersGrid');
+            if (!membersGrid) return;
+            
+            membersGrid.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * membersPerPage;
+            const endIndex = startIndex + membersPerPage;
+            const pageMembers = filteredMembers.slice(startIndex, endIndex);
+            
+            if (pageMembers.length === 0) {
+                membersGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-users" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--text-muted);">No members found</h3>
+                        <p style="color: var(--text-muted);">Try adjusting your search or filters</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            pageMembers.forEach(member => {
+                const memberElement = document.createElement('div');
+                memberElement.className = 'team-member';
+                
+                // Create initials for placeholder
+                const initials = member.name.split(' ').map(n => n[0]).join('. ');
+                
+                memberElement.innerHTML = `
+                    <div class="member-photo">
+                        <img src="images/member${Math.floor(Math.random() * 6) + 1}.jpg" alt="${member.name}" 
+                             onerror="this.src='https://placehold.co/200x200/00ff9c/0a192f?text=${initials}'">
+                    </div>
+                    <h3>${member.name}</h3>
+                    <p>${member.business}</p>
+                    <p>${member.location}</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Member since ${member.joinDate}</p>
+                `;
+                
+                membersGrid.appendChild(memberElement);
+            });
+            
+            document.getElementById('currentPage').textContent = currentPage;
+        }
+        
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayMembers();
+            }
+        }
+        
+        function nextPage() {
+            const totalPages = Math.ceil(filteredMembers.length / membersPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayMembers();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMembers();
+        });
+    </script>
+</body>
+</html>

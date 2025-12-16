@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Umumburio SHG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Animated Star Border -->
+    <svg id="border-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+            <filter id="starGlow">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <!-- Star Border -->
+        <path id="border-path" d="M2,2 L98,2 L98,98 L2,98 Z" 
+              fill="none" 
+              stroke="rgba(0, 255, 156, 0.1)" 
+              stroke-width="0.5"/>
+        
+        <!-- Animated Stars -->
+        <g id="stars"></g>
+    </svg>
+
+    <!-- Page Content -->
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                <span>Umumburio SHG</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="members.html">Members</a>
+                <a href="loans.html">Loans</a>
+                <a href="events.html">Events</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#join">Join Us</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </nav>
+        </header>
+
+        <!-- Login Section -->
+        <section class="section">
+            <div class="login-container">
+                <div class="login-box">
+                    <h2>Member Login</h2>
+                    
+                    <div class="user-type-selector">
+                        <div class="user-type-btn active" data-type="member">
+                            <i class="fas fa-user"></i>
+                            <p>Member</p>
+                        </div>
+                        <div class="user-type-btn" data-type="executive">
+                            <i class="fas fa-user-tie"></i>
+                            <p>Executive</p>
+                        </div>
+                        <div class="user-type-btn" data-type="admin">
+                            <i class="fas fa-user-shield"></i>
+                            <p>Admin</p>
+                        </div>
+                    </div>
+                    
+                    <form id="loginForm">
+                        <input type="hidden" name="userType" value="member" id="userType">
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required placeholder="Enter your password">
+                        </div>
+                        
+                        <div class="form-group" style="text-align: center; margin: 20px 0;">
+                            <a href="#" style="color: var(--primary-green); text-decoration: none;">
+                                Forgot Password?
+                            </a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                        
+                        <div style="text-align: center; margin-top: 20px; color: var(--text-muted);">
+                            <p>Not a member? <a href="index.html#join" style="color: var(--primary-green);">Join Us</a></p>
+                        </div>
+                    </form>
+                    
+                    <div id="loginMessage" style="display: none; margin-top: 20px; padding: 15px; background: rgba(0, 255, 156, 0.1); border-radius: 10px; text-align: center; border: 1px solid rgba(0, 255, 156, 0.2);">
+                        <p style="color: var(--text-light);" id="messageText"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Umumburio SHG</div>
+                    <p>Empowering members through financial support, business growth, and community development since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rhino Building, Kehancha Town</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@umumburioshg.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#join">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Umumburio SHG. All rights reserved. | Registered Self Help Group No. SHG/7890/2023</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

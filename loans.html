@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans - Umumburio SHG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Animated Star Border -->
+    <svg id="border-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+            <filter id="starGlow">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <!-- Star Border -->
+        <path id="border-path" d="M2,2 L98,2 L98,98 L2,98 Z" 
+              fill="none" 
+              stroke="rgba(0, 255, 156, 0.1)" 
+              stroke-width="0.5"/>
+        
+        <!-- Animated Stars -->
+        <g id="stars"></g>
+    </svg>
+
+    <!-- Page Content -->
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                <span>Umumburio SHG</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="members.html">Members</a>
+                <a href="loans.html" class="active">Loans</a>
+                <a href="events.html">Events</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#join">Join Us</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </nav>
+        </header>
+
+        <!-- Loans Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Affordable Loans for Growth</h1>
+                <p>Access flexible loan products designed to support your business growth and personal development. Low interest rates, flexible repayment terms, and no collateral required for small loans.</p>
+                <div class="cta-buttons">
+                    <a href="#loan-products" class="btn btn-primary">
+                        <i class="fas fa-hand-holding-usd"></i> View Loan Products
+                    </a>
+                    <a href="login.html" class="btn btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i> Apply for Loan
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3><i class="fas fa-percentage"></i> Low Interest</h3>
+                    <p>Competitive interest rates starting from 5% per annum for members.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Flexible Terms</h3>
+                    <p>Repayment periods from 3 to 24 months based on your needs.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-shield-alt"></i> No Collateral</h3>
+                    <p>Small loans up to KES 50,000 require no physical collateral.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Products Section -->
+        <section class="section" id="loan-products">
+            <div class="section-title">
+                <h2>Our Loan Products</h2>
+                <p>Choose from a variety of loan options tailored for different needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-briefcase service-icon"></i>
+                    <h3>Business Loan</h3>
+                    <p><strong>Amount:</strong> KES 10,000 - 200,000</p>
+                    <p><strong>Interest:</strong> 5% per annum</p>
+                    <p><strong>Term:</strong> 3-24 months</p>
+                    <p>For business expansion, stock purchase, equipment, etc.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="showLoanDetails('business')">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap service-icon"></i>
+                    <h3>Education Loan</h3>
+                    <p><strong>Amount:</strong> KES 5,000 - 100,000</p>
+                    <p><strong>Interest:</strong> 4% per annum</p>
+                    <p><strong>Term:</strong> 6-12 months</p>
+                    <p>For school fees, training, certification, etc.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="showLoanDetails('education')">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-home service-icon"></i>
+                    <h3>Home Improvement</h3>
+                    <p><strong>Amount:</strong> KES 20,000 - 150,000</p>
+                    <p><strong>Interest:</strong> 6% per annum</p>
+                    <p><strong>Term:</strong> 12-24 months</p>
+                    <p>For renovations, furniture, water systems, etc.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="showLoanDetails('home')">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-heartbeat service-icon"></i>
+                    <h3>Emergency Loan</h3>
+                    <p><strong>Amount:</strong> KES 5,000 - 50,000</p>
+                    <p><strong>Interest:</strong> 3% per annum</p>
+                    <p><strong>Term:</strong> 3-6 months</p>
+                    <p>For medical emergencies, urgent repairs, etc.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="showLoanDetails('emergency')">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-tractor service-icon"></i>
+                    <h3>Agricultural Loan</h3>
+                    <p><strong>Amount:</strong> KES 15,000 - 100,000</p>
+                    <p><strong>Interest:</strong> 4.5% per annum</p>
+                    <p><strong>Term:</strong> 6-18 months</p>
+                    <p>For seeds, fertilizer, equipment, irrigation, etc.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="showLoanDetails('agriculture')">
+                        Learn More
+                    </button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-car service-icon"></i>
+                    <h3>Asset Purchase</h3>
+                    <p><strong>Amount:</strong> KES 30,000 - 300,000</p>
+                    <p><strong>Interest:</strong> 7% per annum</p>
+                    <p><strong>Term:</strong> 12-36 months</p>
+                    <p>For vehicles, machinery, computers, etc.</p>
+                    <button class="btn btn-primary btn-sm" style="margin-top: 15px;" onclick="showLoanDetails('asset')">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Process -->
+        <section class="section">
+            <div class="section-title">
+                <h2>How to Apply</h2>
+                <p>Simple 4-step process to get your loan approved</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--primary-green); color: var(--dark-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">1</div>
+                    <h3>Become a Member</h3>
+                    <p>Join Umumburio SHG and make regular contributions for at least 3 months to establish your savings history.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--primary-green); color: var(--dark-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">2</div>
+                    <h3>Check Eligibility</h3>
+                    <p>Ensure you meet the minimum requirements: active membership, regular contributions, and good standing.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--primary-green); color: var(--dark-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">3</div>
+                    <h3>Submit Application</h3>
+                    <p>Complete the loan application form with details of amount needed, purpose, and repayment plan.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--primary-green); color: var(--dark-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">4</div>
+                    <h3>Executive Review</h3>
+                    <p>Your application is reviewed by the executive committee. Approval typically takes 3-7 days.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Calculator -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Loan Calculator</h2>
+                <p>Estimate your monthly repayments</p>
+            </div>
+            
+            <div class="dashboard-widget" style="max-width: 800px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                    <div>
+                        <div class="form-group">
+                            <label for="calcAmount">Loan Amount (KES)</label>
+                            <input type="range" id="calcAmount" min="5000" max="200000" step="5000" value="50000" style="width: 100%;">
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <span style="color: var(--text-muted); font-size: 0.9rem;">5,000</span>
+                                <span id="calcAmountValue" style="font-weight: bold;">50,000</span>
+                                <span style="color: var(--text-muted); font-size: 0.9rem;">200,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="calcTerm">Repayment Period (Months)</label>
+                            <input type="range" id="calcTerm" min="3" max="24" step="1" value="12" style="width: 100%;">
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <span style="color: var(--text-muted); font-size: 0.9rem;">3</span>
+                                <span id="calcTermValue" style="font-weight: bold;">12</span>
+                                <span style="color: var(--text-muted); font-size: 0.9rem;">24</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="calcInterest">Interest Rate (%)</label>
+                            <select id="calcInterest" style="width: 100%;">
+                                <option value="3">Emergency Loan (3%)</option>
+                                <option value="4">Education Loan (4%)</option>
+                                <option value="4.5">Agricultural Loan (4.5%)</option>
+                                <option value="5" selected>Business Loan (5%)</option>
+                                <option value="6">Home Improvement (6%)</option>
+                                <option value="7">Asset Purchase (7%)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--card-bg); padding: 25px; border-radius: 10px; text-align: center;">
+                        <h3 style="margin-bottom: 20px; color: var(--primary-green);">Estimated Payment</h3>
+                        <div style="margin-bottom: 25px;">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Monthly Payment</p>
+                            <p id="monthlyPayment" style="font-size: 2rem; font-weight: bold; color: var(--primary-green);">KES 4,375</p>
+                        </div>
+                        <div style="margin-bottom: 25px;">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Total Repayment</p>
+                            <p id="totalRepayment" style="font-size: 1.5rem; font-weight: bold;">KES 52,500</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Total Interest</p>
+                            <p id="totalInterest" style="font-size: 1.2rem;">KES 2,500</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="login.html" class="btn btn-primary">
+                        <i class="fas fa-file-signature"></i> Apply Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our loan services</p>
+            </div>
+            
+            <div class="dashboard-widget" style="max-width: 900px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0, 255, 156, 0.1);">
+                    <h3 style="color: var(--text-light); margin-bottom: 10px; cursor: pointer;" onclick="toggleFAQ(1)">
+                        <i class="fas fa-chevron-right" id="faqIcon1" style="margin-right: 10px;"></i>
+                        What are the requirements to qualify for a loan?
+                    </h3>
+                    <div id="faqAnswer1" style="display: none; padding-left: 30px; color: var(--text-muted);">
+                        <p>To qualify for a loan, you must:</p>
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            <li>Be an active member of Umumburio SHG for at least 3 months</li>
+                            <li>Have regular savings contributions (at least 70% of required contributions)</li>
+                            <li>Attend at least 70% of group meetings</li>
+                            <li>Have no outstanding loan balances</li>
+                            <li>Provide at least one guarantor for loans above KES 50,000</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0, 255, 156, 0.1);">
+                    <h3 style="color: var(--text-light); margin-bottom: 10px; cursor: pointer;" onclick="toggleFAQ(2)">
+                        <i class="fas fa-chevron-right" id="faqIcon2" style="margin-right: 10px;"></i>
+                        How long does loan approval take?
+                    </h3>
+                    <div id="faqAnswer2" style="display: none; padding-left: 30px; color: var(--text-muted);">
+                        <p>Loan approval typically takes 3-7 working days. The process involves:</p>
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            <li>Initial screening by the treasurer (1-2 days)</li>
+                            <li>Review by the executive committee (2-3 days)</li>
+                            <li>Final approval by the chairperson (1-2 days)</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Emergency loans can be processed within 24 hours.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0, 255, 156, 0.1);">
+                    <h3 style="color: var(--text-light); margin-bottom: 10px; cursor: pointer;" onclick="toggleFAQ(3)">
+                        <i class="fas fa-chevron-right" id="faqIcon3" style="margin-right: 10px;"></i>
+                        What happens if I miss a payment?
+                    </h3>
+                    <div id="faqAnswer3" style="display: none; padding-left: 30px; color: var(--text-muted);">
+                        <p>If you miss a payment:</p>
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            <li>A reminder will be sent after 3 days</li>
+                            <li>After 7 days, a late fee of 2% will be applied</li>
+                            <li>After 30 days, the guarantor will be contacted</li>
+                            <li>Persistent default may affect future loan eligibility</li>
+                        </ul>
+                        <p style="margin-top: 10px;">We encourage members to communicate any difficulties in advance so we can work out a solution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Umumburio SHG</div>
+                    <p>Empowering members through financial support, business growth, and community development since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rhino Building, Kehancha Town</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@umumburioshg.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#join">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Umumburio SHG. All rights reserved. | Registered Self Help Group No. SHG/7890/2023</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Loans page specific functionality
+        function showLoanDetails(type) {
+            const loanDetails = {
+                'business': {
+                    title: 'Business Loan',
+                    description: 'Designed to help members expand their businesses, purchase stock, buy equipment, or cover operational costs.',
+                    requirements: ['Business registration certificate', '3 months bank statements', 'Business plan', 'Two guarantors for amounts above KES 100,000'],
+                    process: 'Application → Business verification → Executive review → Disbursement'
+                },
+                'education': {
+                    title: 'Education Loan',
+                    description: 'Support for educational expenses including school fees, training programs, certification courses, and learning materials.',
+                    requirements: ['School admission letter', 'Fee structure', 'One guarantor', 'Member for at least 6 months'],
+                    process: 'Application → School verification → Executive review → Disbursement to institution'
+                },
+                // Add other loan types...
+            };
+            
+            const details = loanDetails[type];
+            if (details) {
+                let requirementsList = '';
+                details.requirements.forEach(req => {
+                    requirementsList += `<li>${req}</li>`;
+                });
+                
+                const modalContent = `
+                    <div style="max-width: 500px; background: var(--dark-bg); padding: 30px; border-radius: var(--border-radius); border: 1px solid var(--primary-green);">
+                        <h2 style="color: var(--primary-green); margin-bottom: 20px;">${details.title}</h2>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">${details.description}</p>
+                        
+                        <h3 style="color: var(--text-light); margin-bottom: 10px;">Requirements:</h3>
+                        <ul style="color: var(--text-muted); margin-bottom: 20px; padding-left: 20px;">
+                            ${requirementsList}
+                        </ul>
+                        
+                        <h3 style="color: var(--text-light); margin-bottom: 10px;">Process:</h3>
+                        <p style="color: var(--text-muted);">${details.process}</p>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="login.html" class="btn btn-primary">Apply Now</a>
+                            <button class="btn btn-secondary" onclick="closeModal()" style="margin-left: 10px;">Close</button>
+                        </div>
+                    </div>
+                `;
+                
+                showModal(modalContent);
+            }
+        }
+        
+        function showModal(content) {
+            // Create modal overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(5px);
+            `;
+            overlay.innerHTML = content;
+            overlay.onclick = function(e) {
+                if (e.target === overlay) {
+                    document.body.removeChild(overlay);
+                }
+            };
+            
+            document.body.appendChild(overlay);
+        }
+        
+        function closeModal() {
+            const modal = document.querySelector('div[style*="position: fixed"]');
+            if (modal) {
+                document.body.removeChild(modal);
+            }
+        }
+        
+        function toggleFAQ(num) {
+            const answer = document.getElementById(`faqAnswer${num}`);
+            const icon = document.getElementById(`faqIcon${num}`);
+            
+            if (answer.style.display === 'none' || !answer.style.display) {
+                answer.style.display = 'block';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                answer.style.display = 'none';
+                icon.className = 'fas fa-chevron-right';
+            }
+        }
+        
+        // Loan Calculator
+        function updateCalculator() {
+            const amount = parseInt(document.getElementById('calcAmount').value);
+            const term = parseInt(document.getElementById('calcTerm').value);
+            const interestRate = parseFloat(document.getElementById('calcInterest').value) / 100 / 12; // Monthly rate
+            
+            // Update display values
+            document.getElementById('calcAmountValue').textContent = amount.toLocaleString();
+            document.getElementById('calcTermValue').textContent = term;
+            
+            // Calculate monthly payment
+            const monthlyPayment = amount * interestRate * Math.pow(1 + interestRate, term) / (Math.pow(1 + interestRate, term) - 1);
+            const totalRepayment = monthlyPayment * term;
+            const totalInterest = totalRepayment - amount;
+            
+            // Update results
+            document.getElementById('monthlyPayment').textContent = 'KES ' + Math.round(monthlyPayment).toLocaleString();
+            document.getElementById('totalRepayment').textContent = 'KES ' + Math.round(totalRepayment).toLocaleString();
+            document.getElementById('totalInterest').textContent = 'KES ' + Math.round(totalInterest).toLocaleString();
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize calculator
+            updateCalculator();
+            
+            // Add event listeners to calculator inputs
+            document.getElementById('calcAmount').addEventListener('input', updateCalculator);
+            document.getElementById('calcTerm').addEventListener('input', updateCalculator);
+            document.getElementById('calcInterest').addEventListener('change', updateCalculator);
+            
+            // Initialize FAQ toggles
+            for (let i = 1; i <= 3; i++) {
+                toggleFAQ(i); // Close all by default
+            }
+        });
+    </script>
+</body>
+</html>

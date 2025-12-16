@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Umumburio SHG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Animated Star Border -->
+    <svg id="border-frame" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+            <filter id="starGlow">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        
+        <!-- Star Border -->
+        <path id="border-path" d="M2,2 L98,2 L98,98 L2,98 Z" 
+              fill="none" 
+              stroke="rgba(0, 255, 156, 0.1)" 
+              stroke-width="0.5"/>
+        
+        <!-- Animated Stars -->
+        <g id="stars"></g>
+    </svg>
+
+    <!-- Page Content -->
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                <span>Umumburio SHG</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="members.html">Members</a>
+                <a href="loans.html">Loans</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#join">Join Us</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </nav>
+        </header>
+
+        <!-- Events Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Community Events & Activities</h1>
+                <p>Join us for regular meetings, training sessions, community projects, and social events. Stay connected with fellow members and grow together.</p>
+                <div class="cta-buttons">
+                    <a href="#upcoming-events" class="btn btn-primary">
+                        <i class="fas fa-calendar-alt"></i> View Events
+                    </a>
+                    <a href="#event-calendar" class="btn btn-secondary">
+                        <i class="fas fa-calendar-check"></i> Event Calendar
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3><i class="fas fa-users"></i> Monthly Meetings</h3>
+                    <p>Regular gatherings for updates, contributions, and member interactions.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Training Sessions</h3>
+                    <p>Workshops on financial literacy, business skills, and personal development.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-hands-helping"></i> Community Projects</h3>
+                    <p>Collective initiatives to improve our local community and environment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section class="section" id="upcoming-events">
+            <div class="section-title">
+                <h2>Upcoming Events</h2>
+                <p>Mark your calendar for these important dates</p>
+            </div>
+            
+            <div class="events-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div class="event-card" style="background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(0, 255, 156, 0.1);">
+                    <div style="background: linear-gradient(135deg, var(--primary-green), var(--neon-green)); padding: 20px; text-align: center;">
+                        <p style="font-size: 0.9rem; margin-bottom: 5px;">FEBRUARY</p>
+                        <p style="font-size: 2.5rem; font-weight: bold;">15</p>
+                        <p style="font-size: 0.9rem;">THURSDAY</p>
+                    </div>
+                    <div style="padding: 25px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-light);">Monthly General Meeting</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">
+                            <i class="fas fa-clock" style="margin-right: 8px;"></i> 10:00 AM - 1:00 PM
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Rhino Building, Kehancha Town
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 25px;">
+                            Monthly gathering for contributions, loan disbursements, and group discussions. All members must attend.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--primary-green); font-weight: 500;">
+                                <i class="fas fa-users" style="margin-right: 5px;"></i> 145 attending
+                            </span>
+                            <button class="btn btn-primary btn-sm" onclick="rsvpEvent('meeting-feb')">
+                                <i class="fas fa-calendar-plus"></i> RSVP
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card" style="background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(0, 255, 156, 0.1);">
+                    <div style="background: linear-gradient(135deg, #4e4376, #2b5876); padding: 20px; text-align: center;">
+                        <p style="font-size: 0.9rem; margin-bottom: 5px;">FEBRUARY</p>
+                        <p style="font-size: 2.5rem; font-weight: bold;">22</p>
+                        <p style="font-size: 0.9rem;">THURSDAY</p>
+                    </div>
+                    <div style="padding: 25px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-light);">Financial Literacy Workshop</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">
+                            <i class="fas fa-clock" style="margin-right: 8px;"></i> 2:00 PM - 5:00 PM
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Community Hall, Kehancha
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 25px;">
+                            Workshop on budgeting, saving, and investment strategies. Open to members and the general public.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--primary-green); font-weight: 500;">
+                                <i class="fas fa-users" style="margin-right: 5px;"></i> 89 registered
+                            </span>
+                            <button class="btn btn-primary btn-sm" onclick="rsvpEvent('workshop-feb')">
+                                <i class="fas fa-calendar-plus"></i> Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card" style="background: var(--card-bg); border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(0, 255, 156, 0.1);">
+                    <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a24); padding: 20px; text-align: center;">
+                        <p style="font-size: 0.9rem; margin-bottom: 5px;">MARCH</p>
+                        <p style="font-size: 2.5rem; font-weight: bold;">2</p>
+                        <p style="font-size: 0.9rem;">SATURDAY</p>
+                    </div>
+                    <div style="padding: 25px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-light);">Community Clean-up Day</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">
+                            <i class="fas fa-clock" style="margin-right: 8px;"></i> 8:00 AM - 12:00 PM
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Kehancha Market Area
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 25px;">
+                            Annual community service event. Let's work together to keep our town clean. Tools and refreshments provided.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--primary-green); font-weight: 500;">
+                                <i class="fas fa-users" style="margin-right: 5px;"></i> 102 volunteers
+                            </span>
+                            <button class="btn btn-primary btn-sm" onclick="rsvpEvent('cleanup-mar')">
+                                <i class="fas fa-calendar-plus"></i> Volunteer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#past-events" class="btn btn-secondary">
+                    <i class="fas fa-history"></i> View Past Events
+                </a>
+            </div>
+        </section>
+
+        <!-- Event Calendar -->
+        <section class="section" id="event-calendar">
+            <div class="section-title">
+                <h2>Event Calendar</h2>
+                <p>Plan ahead with our event schedule</p>
+            </div>
+            
+            <div class="dashboard-widget" style="max-width: 1000px; margin: 0 auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>February 2024</h3>
+                    <div>
+                        <button class="btn btn-secondary btn-sm" onclick="prevMonth()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="nextMonth()" style="margin-left: 10px;">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(0, 255, 156, 0.1);">
+                                <th style="padding: 15px; text-align: center;">Sun</th>
+                                <th style="padding: 15px; text-align: center;">Mon</th>
+                                <th style="padding: 15px; text-align: center;">Tue</th>
+                                <th style="padding: 15px; text-align: center;">Wed</th>
+                                <th style="padding: 15px; text-align: center;">Thu</th>
+                                <th style="padding: 15px; text-align: center;">Fri</th>
+                                <th style="padding: 15px; text-align: center;">Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendarBody">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 15px; height: 15px; background: linear-gradient(135deg, var(--primary-green), var(--neon-green)); border-radius: 3px; margin-right: 8px;"></div>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Meeting</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 15px; height: 15px; background: linear-gradient(135deg, #4e4376, #2b5876); border-radius: 3px; margin-right: 8px;"></div>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Training</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 15px; height: 15px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); border-radius: 3px; margin-right: 8px;"></div>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Community</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 15px; height: 15px; background: linear-gradient(135deg, #f39c12, #e67e22); border-radius: 3px; margin-right: 8px;"></div>
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">Social</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Events -->
+        <section class="section" id="past-events">
+            <div class="section-title">
+                <h2>Past Events Gallery</h2>
+                <p>Memories from our previous gatherings and activities</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <div class="gallery-item">
+                        <img src="images/event1.jpg" alt="Annual General Meeting 2023" onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=AGM+2023'">
+                        <div class="gallery-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">AGM 2023</h4>
+                            <p>Annual review and elections</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event2.jpg" alt="Business Training" onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Training'">
+                        <div class="gallery-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Business Training</h4>
+                            <p>Digital marketing workshop</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event3.jpg" alt="Loan Disbursement" onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Loans'">
+                        <div class="gallery-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Loan Day</h4>
+                            <p>Quarterly loan disbursement</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event4.jpg" alt="Community Project" onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Community'">
+                        <div class="gallery-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Tree Planting</h4>
+                            <p>Environmental conservation</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event5.jpg" alt="Member Celebration" onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Celebration'">
+                        <div class="gallery-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Member Celebration</h4>
+                            <p>Annual awards ceremony</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/event6.jpg" alt="Financial Literacy" onerror="this.src='https://placehold.co/400x250/00ff9c/0a192f?text=Finance'">
+                        <div class="gallery-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 15px; transform: translateY(100%); transition: transform 0.3s;">
+                            <h4 style="margin-bottom: 5px;">Finance Workshop</h4>
+                            <p>Saving and investment training</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="gallery.html" class="btn btn-secondary">
+                    <i class="fas fa-images"></i> View Full Event Gallery
+                </a>
+            </div>
+        </section>
+
+        <!-- Event Categories -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Types of Events</h2>
+                <p>Various activities that bring our community together</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-users service-icon"></i>
+                    <h3>Regular Meetings</h3>
+                    <p>Monthly gatherings for contributions, updates, and decision-making. Mandatory for all members.</p>
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-top: 10px;">
+                        <li>Every 3rd Thursday</li>
+                        <li>10:00 AM - 1:00 PM</li>
+                        <li>Rhino Building</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap service-icon"></i>
+                    <h3>Training Workshops</h3>
+                    <p>Skill development sessions on business management, financial literacy, and technical skills.</p>
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-top: 10px;">
+                        <li>Monthly workshops</li>
+                        <li>Open to public</li>
+                        <li>Certificates awarded</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-hand-holding-usd service-icon"></i>
+                    <h3>Loan Activities</h3>
+                    <p>Loan application, disbursement, and repayment collection days. Important financial events.</p>
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-top: 10px;">
+                        <li>Quarterly disbursement</li>
+                        <li>Monthly collections</li>
+                        <li>Financial reviews</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-hands-helping service-icon"></i>
+                    <h3>Community Projects</h3>
+                    <p>Collective initiatives to improve our environment, support schools, and help vulnerable families.</p>
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-top: 10px;">
+                        <li>Quarterly projects</li>
+                        <li>Volunteer-based</li>
+                        <li>Community impact</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-utensils service-icon"></i>
+                    <h3>Social Gatherings</h3>
+                    <p>Celebrations, team building, and networking events to strengthen member relationships.</p>
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-top: 10px;">
+                        <li>Annual celebrations</li>
+                        <li>Member birthdays</li>
+                        <li>Festive seasons</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-bullhorn service-icon"></i>
+                    <h3>Special Events</h3>
+                    <p>Annual General Meetings, elections, guest speaker sessions, and partnership events.</p>
+                    <ul style="color: var(--text-muted); padding-left: 20px; margin-top: 10px;">
+                        <li>Annual AGM</li>
+                        <li>Election years</li>
+                        <li>Guest experts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Umumburio SHG</div>
+                    <p>Empowering members through financial support, business growth, and community development since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rhino Building, Kehancha Town</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@umumburioshg.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#join">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Umumburio SHG. All rights reserved. | Registered Self Help Group No. SHG/7890/2023</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Events page specific functionality
+        function rsvpEvent(eventId) {
+            const eventName = document.querySelector(`button[onclick="rsvpEvent('${eventId}')"]`).closest('.event-card').querySelector('h3').textContent;
+            
+            if (confirm(`RSVP for "${eventName}"?`)) {
+                // Check if user is logged in
+                const user = firebase.auth().currentUser;
+                if (user) {
+                    // Save RSVP to Firebase
+                    alert('RSVP confirmed! You will receive a reminder before the event.');
+                } else {
+                    // Redirect to login
+                    if (confirm('Please login to RSVP for events. Go to login page?')) {
+                        window.location.href = 'login.html';
+                    }
+                }
+            }
+        }
+        
+        function prevMonth() {
+            alert('Previous month - would load previous month events');
+            // In real implementation, update calendar to previous month
+        }
+        
+        function nextMonth() {
+            alert('Next month - would load next month events');
+            // In real implementation, update calendar to next month
+        }
+        
+        // Generate calendar
+        function generateCalendar() {
+            const calendarBody = document.getElementById('calendarBody');
+            if (!calendarBody) return;
+            
+            // Sample events data
+            const events = {
+                1: { type: 'training', title: 'Business Workshop' },
+                15: { type: 'meeting', title: 'Monthly Meeting' },
+                22: { type: 'training', title: 'Finance Training' },
+                2: { type: 'community', title: 'Clean-up Day' },
+                8: { type: 'social', title: 'Member Birthday' },
+                29: { type: 'training', title: 'Digital Skills' }
+            };
+            
+            // Generate calendar for February 2024
+            const month = 1; // February (0-indexed)
+            const year = 2024;
+            
+            // Get first day of month
+            const firstDay = new Date(year, month, 1).getDay();
+            // Get number of days in month
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            let calendarHTML = '';
+            let day = 1;
+            
+            // Generate 6 weeks (maximum)
+            for (let i = 0; i < 6; i++) {
+                calendarHTML += '<tr>';
+                
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        // Empty cells before first day
+                        calendarHTML += '<td style="padding: 10px; text-align: center; color: var(--text-muted);"></td>';
+                    } else if (day > daysInMonth) {
+                        // Empty cells after last day
+                        calendarHTML += '<td style="padding: 10px; text-align: center; color: var(--text-muted);"></td>';
+                    } else {
+                        // Day cell
+                        const event = events[day];
+                        let cellClass = '';
+                        let eventIndicator = '';
+                        
+                        if (event) {
+                            let bgColor = '';
+                            switch(event.type) {
+                                case 'meeting': bgColor = 'linear-gradient(135deg, var(--primary-green), var(--neon-green))'; break;
+                                case 'training': bgColor = 'linear-gradient(135deg, #4e4376, #2b5876)'; break;
+                                case 'community': bgColor = 'linear-gradient(135deg, #ff6b6b, #ee5a24)'; break;
+                                case 'social': bgColor = 'linear-gradient(135deg, #f39c12, #e67e22)'; break;
+                            }
+                            
+                            eventIndicator = `<div style="width: 8px; height: 8px; background: ${bgColor}; border-radius: 50%; margin: 5px auto 0;"></div>`;
+                        }
+                        
+                        calendarHTML += `
+                            <td style="padding: 10px; text-align: center; vertical-align: top; border: 1px solid rgba(0, 255, 156, 0.1);">
+                                <div style="font-weight: ${day === 15 ? 'bold' : 'normal'}; color: ${j === 0 || j === 6 ? 'var(--text-muted)' : 'var(--text-light)'};">${day}</div>
+                                ${eventIndicator}
+                            </td>
+                        `;
+                        day++;
+                    }
+                }
+                
+                calendarHTML += '</tr>';
+                
+                if (day > daysInMonth) {
+                    break;
+                }
+            }
+            
+            calendarBody.innerHTML = calendarHTML;
+        }
+        
+        // Add hover effects to gallery items
+        function initGalleryHover() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const overlay = this.querySelector('.gallery-overlay');
+                    if (overlay) {
+                        overlay.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    const overlay = this.querySelector('.gallery-overlay');
+                    if (overlay) {
+                        overlay.style.transform = 'translateY(100%)';
+                    }
+                });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCalendar();
+            initGalleryHover();
+        });
+    </script>
+</body>
+</html>
