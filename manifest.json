@@ -1,0 +1,13 @@
+// Location: umumburio-shg/manifest.json
+{
+  "name": "Umumburio SHG",
+  "short_name": "Umumburio",
+  "description": "Empowering growth through unity",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a192f",
+  "theme_color": "#00ff9c",
+  "icons": [
+    // References icons in the icons/ folder
+  ]
+}
